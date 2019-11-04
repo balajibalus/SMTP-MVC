@@ -1,0 +1,31 @@
+﻿@model MVCSMTP.Models.Gmail
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>SMTP by Using MVC</h2>
+
+@using (Html.BeginForm("Index", "EmailSetup", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{<center>
+    <table>
+        <tr>
+            <td>To:</td>
+            <td>@Html.TextBoxFor(model => model.To)</td>
+        </tr>
+        <tr>
+            <td>Subject:</td>
+            <td>@Html.TextBoxFor(model => model.Subject)</td>
+        </tr>
+        <tr>
+            <td>Body:</td>
+            <td>@Html.TextAreaFor(model => model.Body, new { rows = "15", cols = "25" })</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Send" /></td>
+        </tr>
+    </table>
+    <br />
+    <span style="color:green">@ViewBag.Message</span>
+</center>
+}
